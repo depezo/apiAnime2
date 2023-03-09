@@ -1,0 +1,70 @@
+type Query {
+    getEpisodesW(id: String, idAnime: Int): EpisodeW
+    getAnimesFav(id: String): [Anime]
+    getRoles: [Rol]
+    getTypesImages: [TypeImage]
+}
+
+type Mutation {
+    createUser(email: String,id: String): String
+    setEpisodesW(id: String, idAnime: Int, ew: Int): String
+    updateUsername(id: String, username: String): String
+    updatePhoto(id: String, newPhoto: String): String
+    updateGif(id: String, newGif: String): String
+    updateAnimesFav(id: String, anime: AnimeFav, type: String): String
+    setLastViewed(id: String, add: AnimeFav,removeId: String, withRemoved: Boolean): String
+    updateRol(id: String, rol: RolInput): String
+    setFinishedAnime(id: String, idAnime: Int): String
+}
+
+input AnimeFav {
+    id: Int
+    title: String
+    synopsis: String
+    score: Float
+    episodes: Int
+    type: String
+    url_img: String
+}
+
+input RolInput{
+    description: String
+    color: String
+    selectable: Boolean
+}
+
+type EpisodeW {
+    episodes: [Int]
+    isFinished: Boolean
+}
+
+type User {
+    id: String
+    username: String
+    email: String
+    url_photo: String
+}
+
+type UserFull {
+    id: String
+    username: String
+    url_photo: String
+    url_gif: String
+    count_anime: Int
+    count_episodes: Int
+    count_reviews: Int
+    rol: Rol
+}
+
+type Rol {
+    description: String
+    color: String
+    selectable: Boolean
+}
+
+type TypeImage {
+    id: String
+    description: String
+    url_img: String
+    images: [String]
+}

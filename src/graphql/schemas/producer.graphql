@@ -1,0 +1,27 @@
+type Query {
+    getProducerAnimes(id:Int): Producer
+}
+
+type Producer {
+    id:ID
+    name: String
+    url_img: String
+    description:String
+    established: String
+    recent_news: ShortNews
+    url_news: String
+    social: [Social]
+    animes: [ShortAnime]
+}
+
+type Social {
+    type: String
+    url: String
+}
+
+type ShortAnime {
+    id: ID
+    title: String
+    url_img: String
+    stars: Float
+}

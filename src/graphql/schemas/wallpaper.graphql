@@ -1,0 +1,106 @@
+type Query {
+    getTagsByString(input: String): [Tag]
+    getTopWeekWallpapers: [Wallpaper]
+    getSectionsWallpaperHome: [Section]
+    getSectionWallpaper(query: String,userId: String): [Wallpaper]
+    getSectionCollection(query: String, userId: String): [Collection]
+    getUserAndSections(userId:String, tags: [String], isComingFrom: String): UserAndSections
+    getWallpapersOfCollection(wallpaperIds: [String]): [Wallpaper]
+    getTopTags: [Tag]
+    getMostSearchedWallpapers: [Wallpaper]
+    getWallpaperByInput(input: String): [Wallpaper]
+    getForCheckWallpapers: [Wallpaper]
+    getCollectionsByInput(input: String): [Collection]
+}
+
+type UserAndSections {
+    user: UserFull
+    sections: [Section]
+}
+
+type Mutation {
+    addNewWallpaper(wallpaper: WallpaperInput): String
+    publishCollection(collection: CollectionInput): String
+    setLikeOrDislikeWallpaper(docId: String, userId: String, type: String, isRemoving: Boolean, reference: String): String
+    incrementDownloadCount(wallpaperId: String): String
+    approveWallpaper(idWallpaper: String, status: String, tags: [String]): String
+}
+
+type Collection {
+    id: String
+    title: String
+    likes: [String]
+    dislikes: [String]
+    banner_wallpapers: [Wallpaper]
+    wallpapers: [String]
+    wallpapers_count: Int
+    by_downloads_count: Int
+    by_search_count: Int
+    tags: [String]
+    user: String
+}
+
+input CollectionInput {
+    title: String
+    banner_wallpapers: [WallpaperInput]
+    wallpapers: [String]
+    wallpapers_count: Int
+    tags: [String]
+    user: String
+}
+
+type Section {
+    description: String
+    position: Int
+    type: String
+    query: String
+}
+
+type Wallpaper {
+    id: String
+    title: String
+    url_img: String
+    url_storage: String
+    likes: [String]
+    dislikes: [String]
+    tags: [String]
+    user: String,
+    by_search_count: Int
+    by_downloads_count: Int
+    collections: [String]
+    width: Int
+    height: Int
+    typeResolution: TypeResolution
+    status: String
+}
+
+input WallpaperInput {
+    title: String
+    url_img: String
+    url_storage: String
+    tags: [String]
+    user: String,
+    width: Int
+    height: Int
+    typeResolution: TypeResolution
+    status: String
+}
+
+enum TypeResolution {
+    HD,
+    FHD,
+    QHD,
+    UHD
+}
+
+input TagInput {
+    id: String
+    description: String
+}
+
+type Tag {
+    id: String
+    description: String
+    by_search_count: Int
+    wallpapers_count: Int
+}

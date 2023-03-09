@@ -1,0 +1,10 @@
+type Query {
+    getGenresAnimes(id:Int,page:Int):[AnimeSeason]
+}
+
+type Genre {
+    "Mall id of the Genre"
+    id:ID
+    "Description of the Genre"
+    description: String
+}

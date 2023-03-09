@@ -1,0 +1,15 @@
+type Query {
+    getSearchAnimes(request:String, page:Int,hentai_status:Boolean): [SearchAnime]
+    getLetterAnimes(letter:String, page:Int): [SearchAnime]
+}
+
+type SearchAnime {
+    id:ID
+    title:String
+    synopsis: String
+    url_page: String
+    url_img: String
+    type:String
+    episodes:Int
+    score:Float
+}

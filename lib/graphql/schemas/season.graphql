@@ -1,0 +1,25 @@
+type Query {
+    getAnimesSeason(year:Int,season:Season):[AnimeSeason]
+}
+
+type AnimeSeason{
+    id:ID
+    title:String
+    synopsis:String
+    studio:Producer
+    episodes:Int
+    source:String
+    url_page:String
+    url_img:String
+    score: Float
+    type:String
+    release:String
+    genres: [Genre]
+}
+
+enum Season {
+    summer
+    fall
+    winter
+    spring
+}

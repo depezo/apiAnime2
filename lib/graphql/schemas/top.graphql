@@ -1,0 +1,28 @@
+type Query {
+    getTopAnimes(typeAnime:TypeAnime,page:Int): [TopAnime]
+}
+
+type TopAnime {
+    id:ID
+    title:String
+    rank: Int
+    type:String
+    episodes:Int
+    score:Float
+    url_page:String
+    url_img:String
+    emision:String
+}
+
+enum TypeAnime {
+    all,
+    airing,
+    upcoming,
+    tv,
+    movie,
+    ova,
+    ona,
+    special,
+    bypopularity,
+    favorite
+}

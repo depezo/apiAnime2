@@ -1,0 +1,58 @@
+type Query {
+    getSubEpisodes(name:String,episode:Int,idAnime: Int,isDebug: Boolean): [Episode]
+    getLatEpisodes(name:String,episode:Int, idAnime: Int,isDebug: Boolean): [Episode]
+    getHEpisodes(name:String,episode:Int): [Episode]
+    getLastEpisodeUploaded(idAnime: Int, isDebug: Boolean): [Episode]
+    getAllEmisionDub: [Anime]
+    getWeekdayEmisionDub(weekday: String): [Anime]
+}
+
+type Mutation {
+    setLastEpisodeUploaded(tinyAnime: TinyAnimeLAInput, nameEpisode: String!, url_img: String!, episode: Int!, language: String!, episodes: [InputEpisode]!): String
+    updateWeekdayEpisode(idAnime: Int, weekday: String, language: String): String
+    updateHourEpisode(idAnime: Int, hour: Int, minute: Int, language: String): String
+    updateStatusEpisode(idAnime: Int, status: String, language: String): String
+}
+
+input TinyAnimeLAInput {
+    idAnime: Int
+    title: String
+    url_img: String
+    url_page:String
+    episodes: Int
+    synopsis: String
+}
+
+type LastEpisodeUploaded {
+    idAnime: Int
+    nameAnime: String
+    nameEpisode: String
+    url_img: String
+    episode: Int
+    language: String
+    episodes: [Episode]
+}
+
+type Episode {
+    type:String
+    url:String
+    language:String
+    downloable: Boolean
+    type_downloable: TypeDownloable
+    url_download: String
+}
+
+input InputEpisode {
+    type:String
+    url:String
+    language:String
+    downloable: Boolean
+    type_downloable: TypeDownloable
+    url_download: String
+}
+
+enum TypeDownloable {
+    NONE
+    DIRECT
+    WEB
+}

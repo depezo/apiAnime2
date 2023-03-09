@@ -1,0 +1,25 @@
+type Query {
+    getChats: [Chat]
+}
+
+type Mutation {
+    sendMessage(message: String, user: UserData): String
+    sendTypeMessage(message: String, user: UserData, type: String): String
+}
+
+type Chat {
+    id: String
+    description: String
+    url_img: String
+}
+
+input UserData {
+    id: String
+    username: String
+    url_photo: String
+    url_gif: String
+    count_anime: Int
+    count_episodes: Int
+    count_reviews: Int
+    rol: RolInput
+}

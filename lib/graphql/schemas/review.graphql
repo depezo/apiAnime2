@@ -1,0 +1,25 @@
+type Query {
+    getReviewsByAnime(id: Int): [Review]
+    getTopReviews: [Review]
+    getBestReviewWeek: [Review]
+    getReviewsByAnimeV2(id: Int, userId: String, filter: String): [Review]
+    getMoreReviewsByAnime(id: Int, filter: String, lastId: String): [Review]
+    getReviewsByUser(id: String): [Review]
+}
+
+type Mutation {
+    setReview(id: String, title: String, description: String, anime: TinyAnimeInput): String
+    setLikeReview(idUser: String,type: TypeReaction,idAnime: Int,idReview: String): String
+    reportReview(id: String, reason: String): String
+    deleteReview(id: String, idUser: String): String
+}
+
+type Review {
+    id: String
+    user: UserFull
+    title: String
+    description: String
+    anime: TinyAnime
+    likes: [String]
+    datetime: String
+}

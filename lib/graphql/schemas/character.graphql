@@ -1,0 +1,25 @@
+type Query {
+    getCharacters(url:String):[Character]
+    getCharacter(id: Int): CharacterFull
+}
+
+type Character {
+    id:ID!
+    name: String
+    url_img: String
+    url_page:String
+    actor: Actor
+}
+
+type CharacterFull {
+    id:ID!
+    name: String
+    url_img: String
+    url_page:String
+    age:String
+    birthday:String
+    blood_type: String
+    height:String
+    description:String
+    actor: Actor
+}

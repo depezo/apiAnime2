@@ -1,0 +1,8 @@
+type Query {
+    getScheduleAnimes: [ScheduleAnimes]
+}
+
+type ScheduleAnimes {
+    day: String!
+    animes: [AnimeSeason]
+}

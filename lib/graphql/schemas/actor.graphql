@@ -1,0 +1,22 @@
+type Query {
+    getActor(id: Int) : ActorFull
+}
+
+type Actor {
+    id:ID!
+    name: String
+    url_page:String
+    url_img: String
+}
+
+type ActorFull{
+    id:ID
+    name: String
+    description: String
+    url_page:String
+    url_img: String
+    birthday:String
+    website:String
+    animes: [TinyAnime]
+    characters: [Character]
+}

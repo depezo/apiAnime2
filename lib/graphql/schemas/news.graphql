@@ -1,0 +1,36 @@
+type Query {
+    getNews(id: Int): News
+    getAllNews(page: Int): [ShortNews]
+    getNewsByTag(tag: String, page: Int): [ShortNews]
+    getNewsByProducer(url: String): [ShortNews]
+}
+
+type News {
+    id: ID
+    title: String
+    url_img: String
+    text: String
+    url_video: String
+    tags: [String]
+    related_news: [RelatedNews]
+    related_anime: RelatedAnimeNews
+}
+
+type ShortNews {
+    id: ID
+    title: String
+    url_img: String
+    text: String
+    tags: [String]
+}
+
+type RelatedNews {
+    id: ID
+    title: String
+    url_img: String
+}
+
+type RelatedAnimeNews {
+    id: ID
+    title: String
+}
